@@ -2,7 +2,7 @@
   "name": "react-themeable",
   "version": "1.0.0",
   "description": "Utility for making React components easily themeable",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist",
