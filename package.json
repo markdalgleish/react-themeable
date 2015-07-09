@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "babel-istanbul cover _mocha -- --compilers js:babel/register && babel-istanbul check-coverage --branches 100",
+    "coverage": "cat ./coverage/coverage.json | ./node_modules/codecov.io/bin/codecov.io.js",
     "build": "babel src -d dist",
     "prepublish": "npm run build"
   },
@@ -25,6 +26,7 @@
     "babel": "^5.6.14",
     "babel-istanbul": "^0.2.10",
     "chai": "^3.0.0",
+    "codecov.io": "^0.1.5",
     "mocha": "^2.2.5"
   }
 }
