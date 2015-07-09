@@ -1,3 +1,5 @@
+[![Build Status](https://img.shields.io/travis/markdalgleish/react-themeable/master.svg?style=flat-square)](http://travis-ci.org/markdalgleish/react-themeable)
+
 # react-themeable
 
 Utility for making React components easily themeable.
