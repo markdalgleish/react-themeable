@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/markdalgleish/react-themeable/master.svg?style=flat-square)](http://travis-ci.org/markdalgleish/react-themeable)
+[![Build Status](https://img.shields.io/travis/markdalgleish/react-themeable/master.svg?style=flat-square)](http://travis-ci.org/markdalgleish/react-themeable) [![npm](https://img.shields.io/npm/v/react-themeable.svg?style=flat-square)](https://www.npmjs.com/package/react-themeable)
 
 # react-themeable
 
