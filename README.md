@@ -122,6 +122,12 @@ const sheet = jss.createStyleSheet({
 
 ### Global CSS
 
+```css
+.MyComponent__foo { color: red; }
+.MyComponent__foo:hover { color: green; }
+.MyComponent__bar { color: blue; }
+```
+
 ```js
 const theme = {
   foo: 'MyComponent__foo',
