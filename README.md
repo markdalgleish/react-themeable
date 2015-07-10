@@ -10,7 +10,7 @@ Utility for making React components easily themeable.
 
 The React community is highly fragmented when it comes to styling. How do we write components that can happily co-exist with all of these competing approaches?
 
-With react-themeable, you can support custom themes provided by [CSS Modules](https://github.com/css-modules/css-modules), [Radium](http://projects.formidablelabs.com/radium/), [React Style](https://github.com/js-next/react-style), [JSS](https://github.com/jsstyles/jss), or even plain old style objects as easily as this:
+With react-themeable, you can support custom themes provided by [CSS Modules](https://github.com/css-modules/css-modules), [Radium](http://projects.formidablelabs.com/radium/), [React Style](https://github.com/js-next/react-style), [JSS](https://github.com/jsstyles/jss), global CSS or inline styles as easily as this:
 
 ```js
 <MyComponent theme={theme} />
@@ -120,7 +120,18 @@ const sheet = jss.createStyleSheet({
 <MyComponent theme={sheet.classes} />
 ```
 
-### Plain style objects
+### Global CSS
+
+```js
+const theme = {
+  foo: 'MyComponent__foo',
+  bar: 'MyComponent__bar'
+};
+...
+<MyComponent theme={theme} />
+```
+
+### Inline styles
 
 ```js
 const theme = {
