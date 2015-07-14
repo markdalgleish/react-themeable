@@ -24,7 +24,15 @@ With react-themeable, you can support custom themes provided by [CSS Modules](ht
 
 `react-themeable` exposes just a single function.
 
-This function is designed to accept a `theme` prop inside of your `render` method. This then returns a small helper function that accepts a key and a series of classes/style names.
+This function is designed to accept a `theme` prop inside of your `render` method. This then returns a small helper function that accepts a key and a series of style names.
+
+```js
+const theme = themeable(this.props.theme);
+...
+<div {...theme(key, ...styleNames)} />
+```
+
+*Note: A unique key for each themed element is required for [Radium](http://projects.formidablelabs.com/radium/) to work correctly.*
 
 This helper function detects whether a theme is class or style based, and creates the appropriate attributes for you.
 
