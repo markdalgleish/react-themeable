@@ -31,6 +31,36 @@ describe('className', () => {
 
 });
 
+describe('namespaced className', () => {
+  const classes = { 'my-namespace__foo': 'aaa', 'my-namespace__bar': 'bbb' };
+  const classTheme = themeable(classes, { namespace: 'my-namespace__' });
+
+  it('should return a single class', () => {
+    expect(classTheme(1, 'foo'))
+      .to.deep.equal({
+        key: 1,
+        className: classes['my-namespace__foo']
+      });
+  });
+
+  it('should return multiple classes', () => {
+    expect(classTheme(2, 'foo', 'bar'))
+      .to.deep.equal({
+        key: 2,
+        className: `${classes['my-namespace__foo']} ${classes['my-namespace__bar']}`
+      });
+  });
+
+  it('should ignore falsy values', () => {
+    expect(classTheme(1, null, 'foo', undefined, false))
+      .to.deep.equal({
+        key: 1,
+        className: classes['my-namespace__foo']
+      });
+  });
+
+});
+
 describe('style', () => {
   const styles = {
     foo: {
