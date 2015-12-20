@@ -4,9 +4,7 @@ const truthy = x => x;
 
 export default theme => (key, ...names) => {
   const styles = names
-    .map(name => {
-      return theme[name]
-    })
+    .map(name => theme[name])
     .filter(truthy);
 
   return typeof styles[0] === 'string' ?
