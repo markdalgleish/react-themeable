@@ -1,6 +1,5 @@
-import themeable from '../src';
+import themeable, { autokey } from '../src';
 import { expect } from 'chai';
-
 describe('className', () => {
   const classes = { foo: 'aaa', bar: 'bbb' };
   const classTheme = themeable(classes);
@@ -74,6 +73,62 @@ describe('style', () => {
         style: {
           color: 'red',
           fontSize: '16px'
+        }
+      });
+  });
+
+});
+
+describe('autokey', () => {
+  const classes = { foo: 'aaa', bar: 'bbb' };
+  const styles = {
+    foo: {
+      color: 'red',
+      fontSize: '16px'
+    },
+    bar: {
+      color: 'blue',
+      fontWeight: 'bold'
+    }
+  };
+  const classTheme = autokey(themeable(classes));
+  const styleTheme = autokey(themeable(styles));
+
+  it('should return a single class', () => {
+    expect(classTheme('foo'))
+      .to.deep.equal({
+        key: 1,
+        className: classes.foo
+      });
+  });
+
+  it('should return multiple classes', () => {
+    expect(classTheme('foo', 'bar'))
+      .to.deep.equal({
+        key: 2,
+        className: `${classes.foo} ${classes.bar}`
+      });
+  });
+
+  it('should return a single style', () => {
+    expect(styleTheme('foo'))
+      .to.deep.equal({
+        key: 1,
+        style: {
+          color: 'red',
+          fontSize: '16px'
+        }
+      });
+  });
+
+  it('should return multiple styles merged', () => {
+    expect(styleTheme('foo', 'bar'))
+      .to.deep.equal({
+        key: 2,
+        style: {
+          fontSize: '16px',
+          color: 'blue',
+          fontWeight: 'bold'
         }
       });
   });
