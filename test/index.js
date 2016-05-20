@@ -31,6 +31,37 @@ describe('className', () => {
 
 });
 
+describe('styles with classname decorator (e.g. Aphrodite)', () => {
+  const classes = { foo: { color: 'red' }, bar: { color: 'blue' } };
+  const colorsToString = (...styles) => styles.map(x => x.color).join(' ');
+  const classTheme = themeable([classes, colorsToString]);
+
+  it('should return a single class', () => {
+    expect(classTheme(1, 'foo'))
+      .to.deep.equal({
+        key: 1,
+        className: 'red'
+      });
+  });
+
+  it('should return multiple classes', () => {
+    expect(classTheme(2, 'foo', 'bar'))
+      .to.deep.equal({
+        key: 2,
+        className: 'red blue'
+      });
+  });
+
+  it('should ignore falsy values', () => {
+    expect(classTheme(1, null, 'foo', undefined, false))
+      .to.deep.equal({
+        key: 1,
+        className: 'red'
+      });
+  });
+
+});
+
 describe('style', () => {
   const styles = {
     foo: {

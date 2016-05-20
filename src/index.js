@@ -2,12 +2,18 @@ import assign from 'object-assign';
 
 const truthy = x => x;
 
-export default theme => (key, ...names) => {
-  const styles = names
-    .map(name => theme[name])
-    .filter(truthy);
+export default input => {
+  const [ theme, classNameDecorator ] = Array.isArray(input) && input.length === 2 ?
+    input :
+    [ input, null ];
 
-  return typeof styles[0] === 'string' ?
-    { key, className: styles.join(' ') } :
-    { key, style: assign({}, ...styles) };
+  return (key, ...names) => {
+    const styles = names
+      .map(name => theme[name])
+      .filter(truthy);
+
+    return typeof styles[0] === 'string' || typeof classNameDecorator === 'function' ?
+      { key, className: classNameDecorator ? classNameDecorator(...styles) : styles.join(' ') } :
+      { key, style: assign({}, ...styles) };
+  };
 };

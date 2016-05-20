@@ -10,7 +10,7 @@ Utility for making React components easily themeable.
 
 The React community is highly fragmented when it comes to styling. How do we write components that can happily co-exist with all of these competing approaches?
 
-With react-themeable, you can support custom themes provided by [CSS Modules](https://github.com/css-modules/css-modules), [Radium](http://projects.formidablelabs.com/radium/), [React Style](https://github.com/js-next/react-style), [JSS](https://github.com/jsstyles/jss), global CSS or inline styles as easily as this:
+With react-themeable, you can support custom themes provided by [CSS Modules](https://github.com/css-modules/css-modules), [Radium](http://projects.formidablelabs.com/radium/), [Aphrodite](https://github.com/Khan/aphrodite), [React Style](https://github.com/js-next/react-style), [JSS](https://github.com/jsstyles/jss), global CSS or inline styles as easily as this:
 
 ```js
 <MyComponent theme={theme} />
@@ -92,6 +92,26 @@ const theme = {
 const ThemedMyComponent = Radium(MyComponent);
 ...
 <ThemedMyComponent theme={theme} />
+```
+
+### Aphrodite
+
+```js
+import { StyleSheet, css } from 'aphrodite';
+
+const theme = StyleSheet.create({
+  foo: {
+    color: 'red',
+    ':hover': {
+      color: 'green'
+    }
+  },
+  bar: {
+    color: 'blue'
+  }
+});
+...
+<MyComponent theme={[ theme, css ]} />
 ```
 
 ### React Style
