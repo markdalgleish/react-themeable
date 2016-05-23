@@ -17,3 +17,8 @@ export default input => {
       { key, style: assign({}, ...styles) };
   };
 };
+
+export const autokey = (fnc) => {
+  let autoKey = 1
+  return (...names) => fnc(autoKey++, ...names)
+}
