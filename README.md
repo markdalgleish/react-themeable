@@ -2,7 +2,7 @@
 
 # react-themeable
 
-Utility for making React components easily themeable.
+Utility for making React components easily themeable, written in TypeScript for easier use.
 
 **This project is still experimental, so feedback from component authors would be greatly appreciated!**
 
@@ -24,11 +24,11 @@ With react-themeable, you can support custom themes provided by [CSS Modules](ht
 
 `react-themeable` exposes just a single function.
 
-This function is designed to accept a `theme` prop inside of your `render` method. This then returns a small helper function that accepts a key and a series of style names.
+This function is designed to accept a `theme` prop inside your `render` method. This then returns a small helper function that accepts a key, and a series of style names.
 
-```js
+```tsx
 const theme = themeable(this.props.theme);
-...
+// ...
 <div {...theme(key, ...styleNames)} />
 ```
 
@@ -38,21 +38,19 @@ This helper function detects whether a theme is class or style based, and create
 
 For example:
 
-```js
-import React, { Component } from 'react';
+```tsx
+import React, { VoidFunctionComponent } from 'react';
 import themeable from 'react-themeable';
 
-class MyComponent extends Component {
-  render() {
-    const theme = themeable(this.props.theme);
+const MyComponent: VoidFunctionComponent = () => {
+  const theme = themeable(this.props.theme);
 
-    return (
-      <div {...theme(1, 'root')}>
-        <div {...theme(2, 'foo', 'bar')}>Foo Bar</div>
-        <div {...theme(3, 'baz')}>Baz</div>
-      </div>
-    );
-  }
+  return (
+    <div {...theme(1, 'root')}>
+      <div {...theme(2, 'foo', 'bar')}>Foo Bar</div>
+      <div {...theme(3, 'baz')}>Baz</div>
+    </div>
+  );
 }
 ```
 
@@ -66,15 +64,15 @@ A theme can now be passed to your component like so:
 .bar { color: blue; }
 ```
 
-```js
+```tsx
 import theme from './MyComponentTheme.css';
-...
+// ...
 <MyComponent theme={theme} />
 ```
 
 ### Radium
 
-```js
+```tsx
 import Radium from 'radium';
 
 const theme = {
@@ -90,13 +88,13 @@ const theme = {
 };
 
 const ThemedMyComponent = Radium(MyComponent);
-...
+// ...
 <ThemedMyComponent theme={theme} />
 ```
 
 ### Aphrodite
 
-```js
+```tsx
 import { StyleSheet, css } from 'aphrodite';
 
 const theme = StyleSheet.create({
@@ -110,13 +108,13 @@ const theme = StyleSheet.create({
     color: 'blue'
   }
 });
-...
+// ...
 <MyComponent theme={[ theme, css ]} />
 ```
 
 ### React Style
 
-```js
+```tsx
 import StyleSheet from 'react-style';
 
 const theme = StyleSheet.create({
@@ -127,13 +125,13 @@ const theme = StyleSheet.create({
     color: 'blue'
   }
 });
-...
+// ...
 <MyComponent theme={theme} />
 ```
 
 ### JSS
 
-```js
+```tsx
 import jss from 'jss';
 
 const sheet = jss.createStyleSheet({
@@ -144,7 +142,7 @@ const sheet = jss.createStyleSheet({
     color: 'blue'
   }
 }).attach();
-...
+// ...
 <MyComponent theme={sheet.classes} />
 ```
 
@@ -161,7 +159,7 @@ const theme = {
   foo: 'MyComponent__foo',
   bar: 'MyComponent__bar'
 };
-...
+// ...
 <MyComponent theme={theme} />
 ```
 
@@ -176,7 +174,7 @@ const theme = {
     color: 'blue'
   }
 };
-...
+// ...
 <MyComponent theme={theme} />
 ```
 
