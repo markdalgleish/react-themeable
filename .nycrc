@@ -1,0 +1,20 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "all": true,
+  "require": ["ts-node/register"],
+  "check-coverage": true,
+  "extension": [
+    ".ts",
+    ".tsx"
+  ],
+  "include": [
+    "src"
+  ],
+  "reporter": [
+    "lcov"
+  ],
+  "branches": 100,
+  "lines": 100,
+  "functions": 100,
+  "statements": 100
+}
